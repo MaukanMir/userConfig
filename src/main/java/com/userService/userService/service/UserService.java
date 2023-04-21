@@ -24,11 +24,11 @@ public class UserService {
         return userRepository.findByUserName(newUser.getUsername());
     }
 
-    public List<UserDomain> authenticateUser(UserDomain verifyUser) {
+    public UserDomain authenticateUser(UserDomain verifyUser) {
 
-            List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
+            UserDomain foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
-            if(foundUser.get(0).getPassword() != verifyUser.getPassword()){
+            if( foundUser != null || foundUser.getPassword().equals(verifyUser.getUsername()) && foundUser.getPassword().equals(verifyUser.getPassword())){
                 throw new UnauthorizedUserException("User is not authenticated");
             }
             return foundUser;
