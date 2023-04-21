@@ -15,7 +15,8 @@ public class UserService {
     BCryptPasswordEncoder passwordEncoder;
 
     public void saveUser(UserDomain newUser){
-        String hashedPassword = passwordEncoder.encode(newUser.get);
+        String hashedPassword = passwordEncoder.encode(newUser.getPassword());
+        newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
     }
 }
