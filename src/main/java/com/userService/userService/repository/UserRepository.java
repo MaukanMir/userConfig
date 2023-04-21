@@ -8,5 +8,5 @@ import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "UserRepository", path = "UserRepository")
 public interface UserRepository extends MongoRepository<UserDomain, String> {
-    List<UserDomain> findByUserName(String username);
+    UserDomain findByUserName(String username);
 }

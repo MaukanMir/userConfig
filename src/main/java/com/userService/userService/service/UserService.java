@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    public List<UserDomain> saveUser(UserDomain newUser){
+    public UserDomain saveUser(UserDomain newUser){
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
@@ -25,6 +25,7 @@ public class UserService {
     }
 
     public List<UserDomain> authenticateUser(UserDomain verifyUser) {
+
             List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
             if(foundUser.get(0).getPassword() != verifyUser.getPassword()){
