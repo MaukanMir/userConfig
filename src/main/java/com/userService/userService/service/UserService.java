@@ -1,5 +1,6 @@
 package com.userService.userService.service;
 
+import com.userService.userService.controller.exception.UnauthorizedUserException;
 import com.userService.userService.domain.UserDomain;
 import com.userService.userService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,13 @@ public class UserService {
         return userRepository.findByUserName(newUser.getUsername());
     }
 
-    public List<UserDomain> authenticateUser(UserDomain verifyUser){
+    public List<UserDomain> authenticateUser(UserDomain verifyUser) {
             List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
             if(foundUser.get(0).getPassword() != verifyUser.getPassword()){
-                return
+                throw new UnauthorizedUserException("User is not authenticated");
             }
+            return foundUser;
     }
 
 }
