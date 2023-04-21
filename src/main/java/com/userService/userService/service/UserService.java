@@ -28,9 +28,10 @@ public class UserService {
 
             UserDomain foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
-            if( foundUser != null || foundUser.getPassword().equals(verifyUser.getUsername()) && foundUser.getPassword().equals(verifyUser.getPassword())){
+            if( foundUser == null || !foundUser.getPassword().equals(verifyUser.getUsername()) || !foundUser.getPassword().equals(verifyUser.getPassword())){
                 throw new UnauthorizedUserException("User is not authenticated");
             }
+
             return foundUser;
     }
 
