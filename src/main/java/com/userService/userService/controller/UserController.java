@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RequestMapping("/userBio")
 @RestController
 public class UserController {
@@ -16,7 +18,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/findUser{Id}")
-    public UserDomain grabUserInfo(@PathVariable UserDomain Id){
-
+    public Optional<UserDomain> grabUserInfo(@PathVariable String Id){
+        return userService.findUserProfile(Id);
     }
 }
