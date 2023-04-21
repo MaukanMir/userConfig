@@ -23,4 +23,12 @@ public class UserService {
         return userRepository.findByUserName(newUser.getUsername());
     }
 
+    public List<UserDomain> authenticateUser(UserDomain verifyUser){
+            List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
+
+            if(foundUser.get(0).getPassword() != verifyUser.getPassword()){
+                return
+            }
+    }
+
 }
