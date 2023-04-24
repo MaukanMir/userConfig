@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-@RepositoryRestResource(collectionResourceRel = "UserRepository", path = "UserRepository")
+@RepositoryRestResource(collectionResourceRel = "userConfig", path = "userConfig")
 public interface UserRepository extends MongoRepository<UserDomain, String> {
     UserDomain findByUserName(String username);
 }
