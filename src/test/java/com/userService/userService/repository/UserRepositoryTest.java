@@ -48,4 +48,14 @@ public class UserRepositoryTest {
         assertMatch(this.repository.findById(ud3.getId()).get(), ud3);
     }
 
+    private void assertMatch(UserDomain actual, UserDomain expected){
+        assertThat(actual, is(notNullValue()));
+        assertThat(actual.getId(), is(expected.getId()));
+        assertThat(actual.getUsername(), is(expected.getUsername()));
+        assertThat(actual.getPassword(), is(expected.getPassword()));
+        assertThat(actual.getDob(), is(expected.getDob()));
+        assertThat(actual.getEmail(), is(expected.getEmail()));
+        assertThat(actual.getDob(), is(expected.getDob()));
+    }
+
 }
