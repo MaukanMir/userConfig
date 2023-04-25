@@ -39,9 +39,7 @@ public class UserService {
 
     public Optional<UserDomain> findUserProfile(String Id){
 
-        Optional<UserDomain> foundProfile = userRepository.findById(Id);
-
-        return foundProfile;
+        return  userRepository.findById(Id);
     }
 
 }
