@@ -32,6 +32,8 @@ public class UserRepositoryTest {
     void save_StandardScenario_MatchesExpected(){
 
         UserDomain ud1 = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        UserDomain ud2 = testingUtils.createUserDomain("user2","1236","mm@gmail.com",TODAY.minusDays(1),NOW.minusDays(1));
+
     }
 
 }
