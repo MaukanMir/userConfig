@@ -22,7 +22,6 @@ public class UserService {
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
-
         return userRepository.findByUsername(newUser.getUsername());
     }
     public List<UserDomain> authenticateUser(UserDomain verifyUser) {
