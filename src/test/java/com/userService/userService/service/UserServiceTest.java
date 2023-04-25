@@ -56,6 +56,13 @@ public class UserServiceTest {
 
     @Test
     public void authenticateUserGoldenPaths() throws Exception{
+        UserDomain verifyUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        repository.save(verifyUser);
 
+       List<UserDomain> authenticatedUser = userService.authenticateUser(verifyUser);
+
+       assertEquals(verifyUser.getUsername(), authenticatedUser.get(0).getUsername());
+       assertEquals(verifyUser.getPassword(), authenticatedUser.get(0).getPassword());
+       assertEquals(verifyUser.getDob(), authenticatedUser.get(0).getDob());
     }
 }
