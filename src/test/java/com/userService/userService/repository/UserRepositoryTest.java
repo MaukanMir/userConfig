@@ -40,7 +40,7 @@ public class UserRepositoryTest {
         UserDomain ud2 = testingUtils.createUserDomain("user2","1236","mm@gmail.com",TODAY.minusDays(1),NOW.minusDays(1));
         this.repository.save(ud2);
         UserDomain ud3 = testingUtils.createUserDomain("user3","1236","mm@gmail.com",TODAY.minusDays(2),NOW.minusDays(2));
-
+        this.repository.save(ud3);
         assertThat(this.repository.count(), is(3L));
     }
 
