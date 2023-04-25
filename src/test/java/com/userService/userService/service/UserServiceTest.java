@@ -53,4 +53,9 @@ public class UserServiceTest {
 
         assertEquals(foundUser.get().getUsername(), newUser.getUsername());
     }
+
+    @Test
+    public void authenticateUserGoldenPaths() throws Exception{
+
+    }
 }
