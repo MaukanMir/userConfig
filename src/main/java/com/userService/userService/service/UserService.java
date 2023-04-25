@@ -25,7 +25,6 @@ public class UserService {
 
         return userRepository.findByUsername(newUser.getUsername());
     }
-
     public List<UserDomain> authenticateUser(UserDomain verifyUser) {
 
             List<UserDomain> foundUser = userRepository.findByUsername(verifyUser.getUsername());
@@ -36,7 +35,6 @@ public class UserService {
 
             return foundUser;
     }
-
     public Optional<UserDomain> findUserProfile(String Id){
 
         return  userRepository.findById(Id);
