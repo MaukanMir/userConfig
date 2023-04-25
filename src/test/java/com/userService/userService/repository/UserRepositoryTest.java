@@ -33,7 +33,7 @@ public class UserRepositoryTest {
 
         UserDomain ud1 = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
         UserDomain ud2 = testingUtils.createUserDomain("user2","1236","mm@gmail.com",TODAY.minusDays(1),NOW.minusDays(1));
-
+        UserDomain ud3 = testingUtils.createUserDomain("user3","1236","mm@gmail.com",TODAY.minusDays(2),NOW.minusDays(2));
     }
 
 }
