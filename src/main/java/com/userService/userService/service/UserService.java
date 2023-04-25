@@ -22,14 +22,15 @@ public class UserService {
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
+
         return userRepository.findByUserName(newUser.getUsername());
     }
 
-    public UserDomain authenticateUser(UserDomain verifyUser) {
+    public List<UserDomain> authenticateUser(UserDomain verifyUser) {
 
             List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
-            if( foundUser == null || !foundUser.getPassword().equals(verifyUser.getUsername()) || !foundUser.getPassword().equals(verifyUser.getPassword())){
+            if( foundUser == null || !foundUser.get(0).getPassword().equals(verifyUser.getUsername()) || !foundUser.get(0).getPassword().equals(verifyUser.getPassword())){
                 throw new UnauthorizedUserException("User is not authenticated");
             }
 
