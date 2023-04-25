@@ -11,4 +11,6 @@ public class UserServiceTest {
     TestingUtils testingUtils;
     @Autowired
     UserRepository repository;
+    @Autowired
+    UserService userService;
 }
