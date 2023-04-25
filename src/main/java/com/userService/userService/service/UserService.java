@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,7 +27,7 @@ public class UserService {
 
     public UserDomain authenticateUser(UserDomain verifyUser) {
 
-            UserDomain foundUser = userRepository.findByUserName(verifyUser.getUsername());
+            List<UserDomain> foundUser = userRepository.findByUserName(verifyUser.getUsername());
 
             if( foundUser == null || !foundUser.getPassword().equals(verifyUser.getUsername()) || !foundUser.getPassword().equals(verifyUser.getPassword())){
                 throw new UnauthorizedUserException("User is not authenticated");
