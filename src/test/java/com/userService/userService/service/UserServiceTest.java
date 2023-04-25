@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class UserServiceTest {
@@ -33,6 +36,9 @@ public class UserServiceTest {
 
         userService.saveUser(newUser);
 
+        List<UserDomain> savedUser = this.repository.findByUsername(newUser.getUsername());
+
+        assertEquals(newUser.getPassword(),savedUser.get(0).getPassword());
 
     }
 }
