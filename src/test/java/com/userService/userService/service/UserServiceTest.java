@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,5 +41,14 @@ public class UserServiceTest {
 
         assertEquals(newUser.getPassword(),savedUser.get(0).getPassword());
 
+    }
+
+    @Test
+    public void findUserProfileGoldenPaths() throws Exception{
+        UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+
+        userService.saveUser(newUser);
+
+        Optional<UserDomain> foundUser = userService.findUserProfile(newUser.getId());
     }
 }
