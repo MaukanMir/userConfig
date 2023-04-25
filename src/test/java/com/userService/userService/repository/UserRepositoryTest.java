@@ -42,6 +42,10 @@ public class UserRepositoryTest {
         UserDomain ud3 = testingUtils.createUserDomain("user3","1236","mm@gmail.com",TODAY.minusDays(2),NOW.minusDays(2));
         this.repository.save(ud3);
         assertThat(this.repository.count(), is(3L));
+
+        assertMatch(this.repository.findById(ud1.getId()).get(), ud1);
+        assertMatch(this.repository.findById(ud2.getId()).get(), ud2);
+        assertMatch(this.repository.findById(ud3.getId()).get(), ud3);
     }
 
 }
