@@ -50,5 +50,7 @@ public class UserServiceTest {
         userService.saveUser(newUser);
 
         Optional<UserDomain> foundUser = userService.findUserProfile(newUser.getId());
+
+        assertEquals(foundUser.get().getUsername(), newUser.getUsername());
     }
 }
