@@ -31,5 +31,8 @@ public class UserServiceTest {
     public void saveUserGoldenPaths() throws Exception{
         UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
 
+        userService.saveUser(newUser);
+
+
     }
 }
