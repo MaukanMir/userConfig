@@ -5,6 +5,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -14,5 +15,6 @@ public class UserRepositoryTest {
     UserRepository repository;
 
     private static final LocalDate TODAY = LocalDate.now();
+    private static final LocalDateTime NOW = LocalDateTime.now();
 
 }
