@@ -26,7 +26,7 @@ public class UserService {
         List<UserDomain> savedUser = userRepository.findByUsername(newUser.getUsername());
         return UserDTOWrapper(savedUser);
     }
-    public List<UserDomain> authenticateUser(UserDomain verifyUser) {
+    public UserDTO authenticateUser(UserDomain verifyUser) {
 
             List<UserDomain> foundUser = userRepository.findByUsername(verifyUser.getUsername());
 
@@ -34,7 +34,7 @@ public class UserService {
                 throw new UnauthorizedUserException("User is not authenticated");
             }
 
-            return foundUser;
+            return UserDTOWrapper(foundUser);
     }
     public UserDTO findUserProfile(String Id){
 
