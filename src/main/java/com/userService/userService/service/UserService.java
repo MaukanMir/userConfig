@@ -2,6 +2,7 @@ package com.userService.userService.service;
 
 import com.userService.userService.controller.exception.UnauthorizedUserException;
 import com.userService.userService.domain.UserDomain;
+import com.userService.userService.dto.UserDTO;
 import com.userService.userService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,10 @@ public class UserService {
     }
     public Optional<UserDomain> findUserProfile(String Id){
         return  userRepository.findById(Id);
+    }
+
+    public UserDTO transformObject(List UserDomain){
+
     }
 
 }
