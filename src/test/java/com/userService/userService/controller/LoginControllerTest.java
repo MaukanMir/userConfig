@@ -55,12 +55,10 @@ public class LoginControllerTest {
         ).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
-
     }
 
     @Test
     void loginFailedExceptionErrorPaths() throws Exception{
-
         UserDomain loginForm = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
 
         this.mockMvc.perform(post("/login")
@@ -73,7 +71,5 @@ public class LoginControllerTest {
                     String responseBody = result.getResponse().getContentAsString();
                     assertEquals("User is not authenticated", responseBody);
                 });
-
     }
-
 }
