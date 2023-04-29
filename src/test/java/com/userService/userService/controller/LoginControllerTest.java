@@ -26,4 +26,9 @@ public class LoginControllerTest {
 
     }
 
+    @Test
+    void loginFailedExceptionErrorPaths() throws Exception{
+
+    }
+
 }
