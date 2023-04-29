@@ -57,6 +57,4 @@ public class RegisterControllerTest {
         assertEquals(savedUser.get(0).getUsername(),newUser.getUsername());
         assertEquals(savedUser.get(0).getEmail(),newUser.getEmail());
     }
-
-
 }
