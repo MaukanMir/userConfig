@@ -2,6 +2,7 @@ package com.userService.userService.controller;
 
 import com.userService.userService.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,11 @@ public class LoginControllerTest {
     @AfterEach
     void cleanUp(){
         this.userRepository.deleteAll();
+    }
+
+    @Test
+    void loginAuthenticatorGoldenPaths() throws Exception{
+
     }
 
 }
