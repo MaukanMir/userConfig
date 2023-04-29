@@ -39,7 +39,7 @@ public class UserService {
         return  userRepository.findById(Id);
     }
 
-    public UserDTO transformObject(List UserDomain){
+    public UserDTO UserDTOWrapper(List UserDomain){
 
     }
 
