@@ -13,7 +13,7 @@ public class RegisterControllerTest {
     @Autowired
     ObjectMapper objectMapper;
     @Autowired
-    UserService userService;
-    @Autowired
     UserRepository userRepository;
+    @Autowired
+    RegisterController registerController;
 }
