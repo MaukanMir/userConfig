@@ -34,7 +34,8 @@ public class RegisterControllerTest {
 
     @Test
     void userRegisterGoldenPaths(){
-        UserDomain user = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        userRepository.save(newUser);
     }
 
 
