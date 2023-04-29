@@ -49,6 +49,8 @@ public class UserControllerTest {
 
                 ).andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isNotEmpty());
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$.username").value(user.getUsername()))
+                .andExpect(jsonPath("$.dob").value(user.getDob().toString()));
     }
 }
