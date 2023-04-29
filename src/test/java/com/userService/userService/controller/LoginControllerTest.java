@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -34,6 +35,7 @@ public class LoginControllerTest {
     TestingUtils testingUtils;
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
     private ObjectMapper objectMapper;
 
     @AfterEach
@@ -53,10 +55,21 @@ public class LoginControllerTest {
         ).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
+
     }
 
     @Test
     void loginFailedExceptionErrorPaths() throws Exception{
+
+        UserDomain loginForm = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+
+        this.mockMvc.perform(post("/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(loginForm))
+
+                ).andDo(print())
+                .andExpect(status().isUnauthorized())
+                .andExpect(result -> assertEquals("User is not authenticated", result.getResponse().getErrorMessage()));
 
     }
 
