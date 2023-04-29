@@ -36,8 +36,10 @@ public class UserService {
 
             return foundUser;
     }
-    public Optional<UserDomain> findUserProfile(String Id){
-        return  userRepository.findById(Id);
+    public UserDTO findUserProfile(String Id){
+
+        Optional <UserDomain>  foundProfile = userRepository.findById(Id);
+        return UserDTOWrapper(foundProfile.stream().toList());
     }
 
     public UserDTO UserDTOWrapper(List <UserDomain> userDomainObject){
