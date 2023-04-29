@@ -1,6 +1,7 @@
 package com.userService.userService.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.userService.userService.domain.UserDomain;
 import com.userService.userService.repository.UserRepository;
 import com.userService.userService.utils.TestingUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -10,9 +11,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserControllerTest {
+    private static final LocalDate TODAY = LocalDate.now();
+    private static final LocalDateTime NOW = LocalDateTime.now();
     @Autowired
     ObjectMapper objectMapper;
     @Autowired
@@ -28,6 +34,7 @@ public class UserControllerTest {
     }
     @Test
     void userProfileGoldenPaths() throws Exception{
-
+        UserDomain user = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        userRepository.save(user);
     }
 }
