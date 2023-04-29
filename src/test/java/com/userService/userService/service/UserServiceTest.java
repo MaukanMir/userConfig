@@ -1,6 +1,7 @@
 package com.userService.userService.service;
 
 import com.userService.userService.domain.UserDomain;
+import com.userService.userService.dto.UserDTO;
 import com.userService.userService.repository.UserRepository;
 import com.userService.userService.utils.TestingUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -49,9 +50,9 @@ public class UserServiceTest {
 
         userService.saveUser(newUser);
 
-        Optional<UserDomain> foundUser = userService.findUserProfile(newUser.getId());
+        UserDTO foundProfile = userService.findUserProfile(newUser.getId());
 
-        assertEquals(foundUser.get().getUsername(), newUser.getUsername());
+        assertEquals(foundProfile.getUsername(), newUser.getUsername());
     }
 
     @Test
