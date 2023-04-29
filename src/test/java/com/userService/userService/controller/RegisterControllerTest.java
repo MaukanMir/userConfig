@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -35,7 +36,11 @@ public class RegisterControllerTest {
     @Test
     void userRegisterGoldenPaths(){
         UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
-        userRepository.save(newUser);
+
+        List<UserDomain> savedUser = this.userRepository.findByUsername(newUser.getUsername());
+
+
+
     }
 
 
