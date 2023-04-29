@@ -19,11 +19,12 @@ public class UserService {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    public List <UserDomain> saveUser(UserDomain newUser){
+    public UserDTO saveUser(UserDomain newUser){
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
-        return userRepository.findByUsername(newUser.getUsername());
+        List<UserDomain> savedUser = userRepository.findByUsername(newUser.getUsername());
+        return UserDTOWrapper(savedUser);
     }
     public List<UserDomain> authenticateUser(UserDomain verifyUser) {
 
