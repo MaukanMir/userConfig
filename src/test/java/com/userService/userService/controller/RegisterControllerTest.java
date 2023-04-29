@@ -28,6 +28,8 @@ public class RegisterControllerTest {
     private static final LocalDate TODAY = LocalDate.now();
     private static final LocalDateTime NOW = LocalDateTime.now();
     @Autowired
+    MockMvc mockMvc;
+    @Autowired
     ObjectMapper objectMapper;
     @Autowired
     UserRepository userRepository;
@@ -53,11 +55,7 @@ public class RegisterControllerTest {
         List<UserDomain> savedUser = this.userRepository.findByUsername(newUser.getUsername());
 
         assertEquals(savedUser.get(0).getUsername(),newUser.getUsername());
-
-
-
-
-
+        assertEquals(savedUser.get(0).getEmail(),newUser.getEmail());
     }
 
 
