@@ -1,6 +1,7 @@
 package com.userService.userService.utils;
 
 import com.userService.userService.domain.UserDomain;
+import com.userService.userService.dto.UserDTO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -19,4 +20,16 @@ public class TestingUtils {
                 .createdAt(createdAt)
                 .build();
     }
+
+    public UserDTO createUserDTO(String username, String email, LocalDate dob, LocalDateTime createdAt){
+
+        return UserDTO.builder()
+                .username(username)
+                .email(email)
+                .dob(dob)
+                .createdAt(createdAt)
+                .build();
+    }
+
+
 }
