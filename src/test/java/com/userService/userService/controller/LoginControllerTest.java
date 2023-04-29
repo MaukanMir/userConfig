@@ -69,7 +69,10 @@ public class LoginControllerTest {
 
                 ).andDo(print())
                 .andExpect(status().isUnauthorized())
-                .andExpect(result -> assertEquals("User is not authenticated", result.getResponse().getErrorMessage()));
+                .andExpect(result -> {
+                    String responseBody = result.getResponse().getContentAsString();
+                    assertEquals("User is not authenticated", responseBody);
+                });
 
     }
 

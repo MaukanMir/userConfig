@@ -28,7 +28,7 @@ public class UserService {
 
             List<UserDomain> foundUser = userRepository.findByUsername(verifyUser.getUsername());
 
-            if( foundUser == null || !foundUser.get(0).getUsername().equals(verifyUser.getUsername()) || !foundUser.get(0).getPassword().equals(verifyUser.getPassword())){
+            if( foundUser.isEmpty() || !foundUser.get(0).getUsername().equals(verifyUser.getUsername()) || !foundUser.get(0).getPassword().equals(verifyUser.getPassword())){
                 throw new UnauthorizedUserException("User is not authenticated");
             }
 
