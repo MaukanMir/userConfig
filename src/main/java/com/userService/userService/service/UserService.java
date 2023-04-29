@@ -39,8 +39,14 @@ public class UserService {
         return  userRepository.findById(Id);
     }
 
-    public UserDTO UserDTOWrapper(List UserDomain){
+    public UserDTO UserDTOWrapper(List <UserDomain> userDomainObject){
 
+        return UserDTO.builder()
+                .id(userDomainObject.get(0).getId())
+                .username(userDomainObject.get(0).getUsername())
+                .email(userDomainObject.get(0).getEmail())
+                .dob(userDomainObject.get(0).getDob())
+                .createdAt(userDomainObject.get(0).getCreatedAt()).build();
     }
 
 }
