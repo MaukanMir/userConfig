@@ -3,6 +3,7 @@ package com.userService.userService.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userService.userService.repository.UserRepository;
 import com.userService.userService.service.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,4 +17,9 @@ public class RegisterControllerTest {
     UserRepository userRepository;
     @Autowired
     RegisterController registerController;
+    @AfterEach
+    void cleanUp(){
+        this.userRepository.deleteAll();
+    }
+
 }
