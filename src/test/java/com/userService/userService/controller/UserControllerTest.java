@@ -1,6 +1,5 @@
 package com.userService.userService.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userService.userService.domain.UserDomain;
 import com.userService.userService.repository.UserRepository;
 import com.userService.userService.utils.TestingUtils;
@@ -16,7 +15,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,8 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserControllerTest {
     private static final LocalDate TODAY = LocalDate.now();
     private static final LocalDateTime NOW = LocalDateTime.now();
-    @Autowired
-    ObjectMapper objectMapper;
     @Autowired
     MockMvc mockMvc;
     @Autowired
