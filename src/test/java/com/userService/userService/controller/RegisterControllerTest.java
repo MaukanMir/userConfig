@@ -74,8 +74,25 @@ public class RegisterControllerTest {
                 .andExpect(status().isConflict())
                 .andExpect(result -> {
                     String responseBody = result.getResponse().getContentAsString();
-                    assertEquals("Incorrect Information", responseBody);
+                    assertEquals("The Username already exists", responseBody);
                 });
+    }
+    @Test
+    public void duplicateEmailExceptionErrorPaths() throws Exception {
 
+        UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user2","1234","mm@mail.com",TODAY,NOW);
+        userRepository.save(savedUser);
+
+        this.mockMvc.perform(post("/userRegister")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(newUser))
+
+                ).andDo(print())
+                .andExpect(status().isConflict())
+                .andExpect(result -> {
+                    String responseBody = result.getResponse().getContentAsString();
+                    assertEquals("The Email already exists", responseBody);
+                });
     }
 }

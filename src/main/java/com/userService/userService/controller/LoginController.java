@@ -16,12 +16,10 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<?> authenticateUser(@RequestBody UserDomain loginForm){
-
         try{
             return ResponseEntity.ok(userService.authenticateUser(loginForm));
         }catch(Exception errorMessage){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage.getMessage());
         }
-
     }
 }
