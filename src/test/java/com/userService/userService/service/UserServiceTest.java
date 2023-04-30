@@ -65,4 +65,9 @@ public class UserServiceTest {
        assertEquals(verifyUser.getUsername(), authenticatedUser.getUsername());
        assertEquals(verifyUser.getDob(), authenticatedUser.getDob());
     }
+
+    @Test
+    public void duplicateExceptionErrorPaths()throws Exception {
+
+    }
 }

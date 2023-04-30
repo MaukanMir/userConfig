@@ -1,5 +1,6 @@
 package com.userService.userService.service;
 
+import com.userService.userService.controller.exception.DuplicateUsernameException;
 import com.userService.userService.controller.exception.UnauthorizedUserException;
 import com.userService.userService.domain.UserDomain;
 import com.userService.userService.dto.UserDTO;
@@ -20,6 +21,12 @@ public class UserService {
     BCryptPasswordEncoder passwordEncoder;
 
     public UserDTO saveUser(UserDomain newUser){
+        if(!userRepository.existsByUsername(newUser.getUsername()).isEmpty()){
+            throw new DuplicateUsernameException("The Username already exists");
+        }
+        if(!userRepository.existsByEmail(newUser.getEmail()).isEmpty()){
+            throw new DuplicateUsernameException("The email already exists");
+        }
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);
         userRepository.save(newUser);
