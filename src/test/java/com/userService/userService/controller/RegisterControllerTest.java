@@ -58,7 +58,6 @@ public class RegisterControllerTest {
         assertEquals(savedUser.get(0).getUsername(),newUser.getUsername());
         assertEquals(savedUser.get(0).getEmail(),newUser.getEmail());
     }
-
     @Test
     public void duplicateUsernameExceptionErrorPaths() throws Exception {
 
@@ -87,7 +86,6 @@ public class RegisterControllerTest {
         this.mockMvc.perform(post("/userRegister")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newUser))
-
                 ).andDo(print())
                 .andExpect(status().isConflict())
                 .andExpect(result -> {
