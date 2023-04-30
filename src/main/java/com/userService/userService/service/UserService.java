@@ -22,10 +22,10 @@ public class UserService {
 
     public UserDTO saveUser(UserDomain newUser){
         if(!userRepository.existsByUsername(newUser.getUsername()).isEmpty()){
-            throw new DuplicateUsernameException("Incorrect Information");
+            throw new DuplicateUsernameException("The Username already exists");
         }
         if(!userRepository.existsByEmail(newUser.getEmail()).isEmpty()){
-            throw new DuplicateUsernameException("The email already exists");
+            throw new DuplicateUsernameException("The Email already exists");
         }
         String hashedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(hashedPassword);

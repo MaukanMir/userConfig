@@ -63,7 +63,7 @@ public class RegisterControllerTest {
     public void duplicateUsernameExceptionErrorPaths() throws Exception {
 
         UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
-        UserDomain newUser = testingUtils.createUserDomain("user2","1234","mm@g111mail.com",TODAY,NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@g111mail.com",TODAY,NOW);
         userRepository.save(savedUser);
 
         this.mockMvc.perform(post("/userRegister")
