@@ -2,6 +2,7 @@ package com.userService.userService.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userService.userService.domain.UserDomain;
+import com.userService.userService.dto.UserDTO;
 import com.userService.userService.repository.UserRepository;
 import com.userService.userService.utils.TestingUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -56,5 +57,25 @@ public class RegisterControllerTest {
 
         assertEquals(savedUser.get(0).getUsername(),newUser.getUsername());
         assertEquals(savedUser.get(0).getEmail(),newUser.getEmail());
+    }
+
+    @Test
+    public void duplicateUsernameExceptionErrorPaths() throws Exception {
+
+        UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user2","1234","mm@g111mail.com",TODAY,NOW);
+        userRepository.save(savedUser);
+
+        this.mockMvc.perform(post("/userRegister")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(newUser))
+
+                ).andDo(print())
+                .andExpect(status().isConflict())
+                .andExpect(result -> {
+                    String responseBody = result.getResponse().getContentAsString();
+                    assertEquals("Incorrect Information", responseBody);
+                });
+
     }
 }

@@ -22,7 +22,7 @@ public class UserService {
 
     public UserDTO saveUser(UserDomain newUser){
         if(!userRepository.existsByUsername(newUser.getUsername()).isEmpty()){
-            throw new DuplicateUsernameException("The Username already exists");
+            throw new DuplicateUsernameException("Incorrect Information");
         }
         if(!userRepository.existsByEmail(newUser.getEmail()).isEmpty()){
             throw new DuplicateUsernameException("The email already exists");

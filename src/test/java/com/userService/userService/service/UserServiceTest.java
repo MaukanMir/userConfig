@@ -65,18 +65,4 @@ public class UserServiceTest {
        assertEquals(verifyUser.getUsername(), authenticatedUser.getUsername());
        assertEquals(verifyUser.getDob(), authenticatedUser.getDob());
     }
-
-    @Test
-    public void duplicateUsernameExceptionErrorPaths() throws Exception {
-
-        UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
-        UserDomain NewUser = testingUtils.createUserDomain("user2","1234","mm@g111mail.com",TODAY,NOW);
-        repository.save(savedUser);
-
-        UserDTO testUser = userService.saveUser(NewUser);
-
-
-
-
-    }
 }
