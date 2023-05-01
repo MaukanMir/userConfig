@@ -39,27 +39,27 @@ public class LoginControllerTest {
     private ObjectMapper objectMapper;
 
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         this.userRepository.deleteAll();
     }
 
     @Test
-    void loginAuthenticatorGoldenPaths() throws Exception{
-        UserDomain loginForm = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+    void loginAuthenticatorGoldenPaths() throws Exception {
+        UserDomain loginForm = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
         userRepository.save(loginForm);
 
         this.mockMvc.perform(post("/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(loginForm))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(loginForm))
 
-        ).andDo(print())
+                ).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
     }
 
     @Test
-    void loginFailedExceptionErrorPaths() throws Exception{
-        UserDomain loginForm = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+    void loginFailedExceptionErrorPaths() throws Exception {
+        UserDomain loginForm = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
 
         this.mockMvc.perform(post("/login")
                         .contentType(MediaType.APPLICATION_JSON)

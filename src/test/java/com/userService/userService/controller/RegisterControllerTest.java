@@ -36,14 +36,15 @@ public class RegisterControllerTest {
     UserRepository userRepository;
     @Autowired
     TestingUtils testingUtils;
+
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         this.userRepository.deleteAll();
     }
 
     @Test
-    void userRegisterGoldenPaths() throws Exception{
-        UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+    void userRegisterGoldenPaths() throws Exception {
+        UserDomain newUser = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
 
         this.mockMvc.perform(post("/userRegister")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -55,14 +56,15 @@ public class RegisterControllerTest {
 
         List<UserDomain> savedUser = this.userRepository.findByUsername(newUser.getUsername());
 
-        assertEquals(savedUser.get(0).getUsername(),newUser.getUsername());
-        assertEquals(savedUser.get(0).getEmail(),newUser.getEmail());
+        assertEquals(savedUser.get(0).getUsername(), newUser.getUsername());
+        assertEquals(savedUser.get(0).getEmail(), newUser.getEmail());
     }
+
     @Test
     public void duplicateUsernameExceptionErrorPaths() throws Exception {
 
-        UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
-        UserDomain newUser = testingUtils.createUserDomain("user1","1234","mm@g111mail.com",TODAY,NOW);
+        UserDomain savedUser = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user1", "1234", "mm@g111mail.com", TODAY, NOW);
         userRepository.save(savedUser);
 
         this.mockMvc.perform(post("/userRegister")
@@ -76,11 +78,12 @@ public class RegisterControllerTest {
                     assertEquals("The Username already exists", responseBody);
                 });
     }
+
     @Test
     public void duplicateEmailExceptionErrorPaths() throws Exception {
 
-        UserDomain savedUser = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
-        UserDomain newUser = testingUtils.createUserDomain("user2","1234","mm@gmail.com",TODAY,NOW);
+        UserDomain savedUser = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
+        UserDomain newUser = testingUtils.createUserDomain("user2", "1234", "mm@gmail.com", TODAY, NOW);
         userRepository.save(savedUser);
 
         this.mockMvc.perform(post("/userRegister")

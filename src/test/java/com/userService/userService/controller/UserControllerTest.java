@@ -32,12 +32,13 @@ public class UserControllerTest {
     UserRepository userRepository;
 
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         this.userRepository.deleteAll();
     }
+
     @Test
-    void userProfileGoldenPaths() throws Exception{
-        UserDomain user = testingUtils.createUserDomain("user1","1234","mm@gmail.com",TODAY,NOW);
+    void userProfileGoldenPaths() throws Exception {
+        UserDomain user = testingUtils.createUserDomain("user1", "1234", "mm@gmail.com", TODAY, NOW);
         userRepository.save(user);
 
         this.mockMvc.perform(get("/userProfile/findUser/{Id}", user.getId())
