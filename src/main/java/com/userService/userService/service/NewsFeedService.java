@@ -15,4 +15,5 @@ public class NewsFeedService {
     public NewsFeedDomain saveUserNewsFeed(NewsFeedDomain userFeed){
         return newsFeedRepository.save(userFeed);
     }
+
 }
