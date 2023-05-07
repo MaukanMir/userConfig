@@ -5,14 +5,14 @@ import com.userService.userService.repository.NewsFeedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 @Service
 public class NewsFeedService {
     @Autowired
     NewsFeedRepository newsFeedRepository;
 
-    public List<NewsFeedDomain> saveUserNewsFeed(NewsFeedDomain userFeed){
-
+    public NewsFeedDomain saveUserNewsFeed(NewsFeedDomain userFeed){
+        return newsFeedRepository.save(userFeed);
     }
 }
