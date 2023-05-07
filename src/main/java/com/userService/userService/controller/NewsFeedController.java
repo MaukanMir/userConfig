@@ -18,8 +18,9 @@ public class NewsFeedController {
     }
 
     @PostMapping
-    public NewsFeedDomain saveUserNewsFeed(String username){
+    public NewsFeedDomain saveUserNewsFeed(@RequestBody NewsFeedDomain userInfo){
 
+        return newsFeedService.saveUserNewsFeed(userInfo);
     }
 
 }
