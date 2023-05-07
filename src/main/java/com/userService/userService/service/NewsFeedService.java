@@ -16,7 +16,6 @@ public class NewsFeedService {
     public NewsFeedDomain saveUserNewsFeed(NewsFeedDomain userFeed){
         return newsFeedRepository.save(userFeed);
     }
-
     public List<NewsFeedDomain> findUserNewsFeed(String username){
         return newsFeedRepository.findByUsername(username);
     }
