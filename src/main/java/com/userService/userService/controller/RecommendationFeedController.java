@@ -16,7 +16,7 @@ public class RecommendationFeedController {
     @Autowired
     RecommendationFeedService recommendationFeedService;
 
-    @GetMapping("/")
+    @GetMapping("/getRecomendationFeed")
     public List<RecommendationFeedDomain> findUserRecommendation(@RequestParam String username){
         return recommendationFeedService.sendUserFeed(username);
     }
