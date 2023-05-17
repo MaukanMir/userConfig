@@ -19,7 +19,6 @@ public class NewsFeedController {
 
     @PostMapping
     public NewsFeedDomain saveUserNewsFeed(@RequestBody NewsFeedDomain userInfo){
-
         return newsFeedService.saveUserNewsFeed(userInfo);
     }
 
